@@ -7,220 +7,528 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#f4f2ed;padding:2rem 1rem;min-height:100vh}
-.card{background:#fff;border-radius:16px;max-width:680px;margin:0 auto;padding:2rem;border:1px solid #e5e3dc;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:99px;font-weight:500;margin-right:6px;margin-bottom:4px}
-.badge.blue{background:#e6f1fb;color:#185fa5;border:1px solid #b5d4f4}
-.badge.green{background:#eaf3de;color:#27500a;border:1px solid #c0dd97}
-.badge.amber{background:#faeeda;color:#633806;border:1px solid #fac775}
-.badge.gray{background:#f1efe8;color:#5f5e5a;border:1px solid #d3d1c7}
-hr{border:none;border-top:1px solid #ede9e0;margin:1.25rem 0}
-.sec-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.65rem}
-.task{border:1px solid #e5e3dc;border-radius:12px;margin-bottom:.85rem;overflow:hidden}
-.task-header{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;background:#f7f5f0}
-.task-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
-.task-title{font-size:14px;font-weight:500;color:#1a1a18;flex:1}
-.task-time{font-size:12px;color:#888780;white-space:nowrap}
-.task-body{padding:.85rem 1rem;background:#fff}
-.task-desc{font-size:13.5px;color:#5f5e5a;line-height:1.65;margin-bottom:.75rem}
-.item{display:flex;gap:9px;align-items:flex-start;margin-bottom:.45rem}
-.dot{width:5px;height:5px;border-radius:50%;background:#888780;flex-shrink:0;margin-top:7px}
-.dot.g{background:#3b6d11}
-.item-text{font-size:13.5px;color:#2c2c2a;line-height:1.55}
-.code{background:#f4f2ed;border-radius:8px;padding:.6rem .85rem;font-family:'Courier New',monospace;font-size:12.5px;color:#2c2c2a;margin:.65rem 0;border:1px solid #d3d1c7}
-.dataset-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:.5rem}
-.dataset-table th{background:#2c2c2a;color:#fff;padding:6px 10px;text-align:left;font-weight:500}
-.dataset-table td{padding:5px 10px;border-bottom:1px solid #ede9e0;color:#2c2c2a}
-.dataset-table tr:nth-child(even) td{background:#f7f5f0}
-.alert{background:#faeeda;border:1px solid #fac775;border-radius:10px;padding:.65rem 1rem;font-size:13px;color:#633806;margin-bottom:1.25rem;display:flex;gap:8px;align-items:flex-start}
-.cta{background:#f7f5f0;border-radius:12px;border:1px solid #e5e3dc;padding:1.1rem 1.25rem;margin-top:1.25rem}
-.cta-title{font-size:15px;font-weight:500;color:#1a1a18;margin-bottom:.4rem}
-.cta-sub{font-size:13px;color:#5f5e5a;line-height:1.6}
-.entrega-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
-.entrega-card{background:#fff;border:1px solid #e5e3dc;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a}
-.entrega-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+body{font-family:'Inter',sans-serif;background:#f4f2ed;padding:2rem 1rem;color:#1a1a18}
+.page{background:#fff;border-radius:18px;max-width:820px;margin:0 auto;padding:2.5rem 2.25rem;border:1px solid #e5e3dc;box-shadow:0 2px 20px rgba(0,0,0,0.07)}
+
+/* Header */
+.brand-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid #ede9e0;gap:1rem}
+.brand-name{font-size:15px;font-weight:600;color:#1a1a18}
+.brand-sub{font-size:12px;color:#888780;margin-top:3px;line-height:1.5}
+.deadline-box{background:#fcebeb;border:1px solid #f09595;border-radius:12px;padding:10px 18px;text-align:center;flex-shrink:0}
+.deadline-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#791f1f;margin-bottom:3px}
+.deadline-val{font-size:16px;font-weight:600;color:#a32d2d;white-space:nowrap}
+.deadline-sub{font-size:11px;color:#a32d2d;margin-top:2px}
+
+.hero-title{font-size:28px;font-weight:600;line-height:1.25;margin-bottom:.75rem}
+.hero-sub{font-size:14px;color:#5f5e5a;line-height:1.8;margin-bottom:1.1rem}
+.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem}
+.pill{font-size:12px;padding:4px 13px;border-radius:99px;font-weight:500}
+.pill.green{background:#eaf3de;color:#27500a;border:1px solid #c0dd97}
+.pill.blue{background:#e6f1fb;color:#185fa5;border:1px solid #b5d4f4}
+.pill.amber{background:#faeeda;color:#633806;border:1px solid #fac775}
+.pill.gray{background:#f1efe8;color:#5f5e5a;border:1px solid #d3d1c7}
+.pill.red{background:#fcebeb;color:#791f1f;border:1px solid #f09595}
+
+/* Alerts */
+.alert{display:flex;gap:10px;border-radius:10px;padding:.8rem 1rem;font-size:13.5px;line-height:1.65;margin-bottom:1rem}
+.alert.warn{background:#faeeda;border:1px solid #fac775;color:#633806}
+.alert.info{background:#e6f1fb;border:1px solid #b5d4f4;color:#0c447c}
+.alert.danger{background:#fcebeb;border:1px solid #f09595;color:#791f1f}
+
+hr{border:none;border-top:1px solid #ede9e0;margin:1.75rem 0}
+.sec-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.85rem}
+.body-text{font-size:14px;color:#2c2c2a;line-height:1.8}
+
+/* Context grid */
+.ctx-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1rem 0 1.25rem}
+.ctx-card{background:#f7f5f0;border:1px solid #e5e3dc;border-radius:10px;padding:.9rem 1rem}
+.ctx-label{font-size:10px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.ctx-val{font-size:13.5px;color:#2c2c2a;line-height:1.55}
+
+/* Table */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid #e5e3dc;margin:1rem 0}
+table{width:100%;border-collapse:collapse;font-size:11px}
+thead tr{background:#2c2c2a}
+thead th{padding:8px 9px;text-align:left;color:#fff;font-weight:500;white-space:nowrap;font-size:11px}
+tbody td{padding:6px 9px;border-bottom:1px solid #ede9e0;color:#2c2c2a;white-space:nowrap;vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:#f9f8f6}
+.st{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:500}
+.st.ec{background:#e6f1fb;color:#185fa5}
+.st.cp{background:#eaf3de;color:#27500a}
+.st.rt{background:#fcebeb;color:#791f1f}
+.st.ps{background:#f1efe8;color:#5f5e5a}
+.st.ni{background:#faeeda;color:#633806}
+.pri{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:500}
+.pri.alta{background:#fcebeb;color:#791f1f}
+.pri.media{background:#faeeda;color:#633806}
+.pri.baja{background:#eaf3de;color:#27500a}
+.rsk{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:500}
+.rsk.alto{background:#fcebeb;color:#791f1f}
+.rsk.medio{background:#faeeda;color:#633806}
+.rsk.bajo{background:#eaf3de;color:#27500a}
+
+/* Tasks */
+.task{border:1px solid #e5e3dc;border-radius:14px;margin-bottom:1.25rem;overflow:hidden}
+.task-hdr{display:flex;align-items:center;gap:12px;padding:1rem 1.25rem;background:#f7f5f0}
+.tnum{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.t-info{flex:1}
+.t-name{font-size:14.5px;font-weight:500;color:#1a1a18}
+.t-meta{font-size:12px;color:#888780;margin-top:2px}
+.t-time{font-size:12px;color:#888780;white-space:nowrap;background:#fff;border:1px solid #e5e3dc;border-radius:99px;padding:3px 11px}
+.task-body{padding:1.1rem 1.25rem}
+.t-desc{font-size:13.5px;color:#5f5e5a;line-height:1.7;margin-bottom:1rem}
+
+/* Sub-sections inside tasks */
+.sub-label{font-size:10.5px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.06em;margin:1rem 0 .5rem;padding-top:.75rem;border-top:1px dashed #e5e3dc}
+.sub-label:first-of-type{border-top:none;padding-top:0;margin-top:0}
+
+.li{display:flex;gap:10px;align-items:flex-start;margin-bottom:.6rem}
+.li-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:8px}
+.li-dot.g{background:#3b6d11}
+.li-dot.b{background:#185fa5}
+.li-dot.a{background:#633806}
+.li-dot.r{background:#791f1f}
+.li-text{font-size:13.5px;color:#2c2c2a;line-height:1.6}
+.li-text em{color:#888780;font-style:normal}
+.li-text strong{font-weight:500}
+
+.formula{background:#f4f2ed;border-left:3px solid #c0dd97;border-radius:0 8px 8px 0;padding:.65rem .9rem;font-family:'Courier New',monospace;font-size:11.5px;color:#2c2c2a;margin:.65rem 0;line-height:1.6}
+.code-block{background:#2c2c2a;color:#eaf3de;border-radius:10px;padding:.85rem 1rem;font-family:'Courier New',monospace;font-size:11.5px;margin:.75rem 0;line-height:1.7}
+
+.tip{background:#f7f5f0;border-left:3px solid #fac775;border-radius:0 8px 8px 0;padding:.7rem 1rem;font-size:13px;color:#5f5e5a;line-height:1.65;margin:.85rem 0}
+.tip strong{color:#2c2c2a;font-weight:500}
+
+.bonus-box{background:#eaf3de;border:1px solid #c0dd97;border-radius:10px;padding:.9rem 1rem;margin-top:1rem}
+.bonus-label{font-size:10.5px;font-weight:600;color:#27500a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.bonus-text{font-size:13px;color:#3b6d11;line-height:1.65}
+
+/* Criteria table */
+.crit-table{width:100%;border-collapse:collapse;font-size:13px;margin:.75rem 0;border-radius:10px;overflow:hidden;border:1px solid #e5e3dc}
+.crit-table th{background:#f7f5f0;padding:8px 12px;text-align:left;font-weight:500;color:#5f5e5a;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+.crit-table td{padding:9px 12px;border-top:1px solid #ede9e0;color:#2c2c2a;vertical-align:top;line-height:1.5}
+.crit-table tr:hover td{background:#fafaf8}
+.weight{display:inline-block;background:#2c2c2a;color:#fff;font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px}
+
+/* Rules */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.75rem 0}
+.rule-card{border-radius:10px;padding:.9rem 1rem;font-size:13px;line-height:1.65}
+.rule-yes{background:#eaf3de;border:1px solid #c0dd97;color:#27500a}
+.rule-no{background:#fcebeb;border:1px solid #f09595;color:#791f1f}
+.rule-title{font-weight:600;margin-bottom:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+
+/* Delivery */
+.entrega-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1rem 0}
+.e-card{border-radius:10px;padding:.9rem 1rem;border:1px solid #e5e3dc}
+.e-label{font-size:10px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.e-val{font-size:13.5px;color:#2c2c2a;font-weight:500;line-height:1.45}
+.e-card.deadline{background:#fcebeb;border-color:#f09595}
+.e-card.deadline .e-label{color:#791f1f}
+.e-card.deadline .e-val{color:#a32d2d}
+
+/* Steps */
+.steps{counter-reset:step;margin:.75rem 0}
+.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:.85rem}
+.step-num{width:26px;height:26px;border-radius:50%;background:#2c2c2a;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13.5px;color:#2c2c2a;line-height:1.6;flex:1}
+.step-text em{color:#888780;font-style:normal}
+
+.footer{text-align:center;font-size:11.5px;color:#b4b2a9;margin-top:2rem;padding-top:1.25rem;border-top:1px solid #ede9e0;line-height:1.7}
 </style>
 </head>
 <body>
-<div class="card">
+<div class="page">
 
-  <!-- Header -->
-  <div style="margin-bottom:1.25rem">
-    <div style="font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Prueba técnica</div>
-    <div style="font-size:22px;font-weight:600;color:#1a1a18;line-height:1.3;margin-bottom:.75rem">Analista de datos Jr.</div>
+  <!-- Brand + deadline -->
+  <div class="brand-row">
     <div>
-      <span class="badge green">Excel avanzado</span>
-      <span class="badge blue">Power BI</span>
-      <span class="badge amber">Macros / VBA</span>
-      <span class="badge gray">⏱ 2 horas estimadas</span>
+      <div class="brand-name">[Lima Analytics ]</div>
+      <div class="brand-sub">Proceso de selección · Analista de datos Jr.<br>Lima, Perú · 2025</div>
+    </div>
+    <div class="deadline-box">
+      <div class="deadline-label">⏰ Entrega máxima</div>
+      <div class="deadline-val">Sáb. 03 mayo</div>
+      <div class="deadline-sub">12:00 PM · hora Lima</div>
     </div>
   </div>
 
-  <!-- Alerta -->
-  <div class="alert">
-    ⚠️ <div>Entrega el archivo antes de las <strong>9:00 PM del día de hoy</strong>. Envíalo respondiendo este correo con el asunto: <strong>Prueba Técnica – [Tu nombre]</strong></div>
+  <!-- Hero -->
+  <div class="hero-title">Prueba técnica<br>Analista de datos Jr.</div>
+  <p class="hero-sub">Este ejercicio replica una situación real de trabajo en nuestra organización. No existe una única respuesta correcta — evaluamos <strong>cómo piensas, cómo estructuras el análisis y qué tan bien dominas las herramientas</strong>. Lee todo el documento antes de empezar a trabajar.</p>
+  <div class="pill-row">
+    <span class="pill green">Excel avanzado</span>
+    <span class="pill blue">Power BI</span>
+    <span class="pill amber">Macros / VBA</span>
+    <span class="pill gray">4 tareas</span>
+    <span class="pill gray">⏱ Estimado: 1 – 2 horas</span>
+    <span class="pill red">Entrega: sáb. 03 mayo · 12:00 PM</span>
   </div>
+
+  <!-- Alerts -->
+  <div class="alert warn">
+    ⚠️ <div>Guarda tu archivo Excel como <strong>.xlsm</strong> (habilitado para macros) desde el inicio. Si lo guardas como .xlsx perderás todo el código VBA. Verifica antes de enviar que el archivo abre correctamente y la macro funciona.</div>
+  </div>
+  <div class="alert info">
+    💡 <div>Si algo no te sale al 100%, <strong>deja un comentario en la celda o en el código VBA explicando qué intentabas hacer y por qué</strong>. Eso demuestra criterio técnico y también se evalúa. No dejes tareas en blanco sin una nota explicatoria.</div>
+  </div>
+
+  <hr>
 
   <!-- Contexto -->
   <div class="sec-label">Contexto del ejercicio</div>
-  <p style="font-size:14px;color:#2c2c2a;line-height:1.75;margin-bottom:1.25rem">
-    Eres el analista de datos de una empresa con un portafolio de proyectos activos. Tu jefe necesita un sistema básico que permita visualizar el estado actual de cada proyecto, detectar alertas de retraso o sobreejercicio y generar reportes automáticos. Tú debes construirlo.
-  </p>
+  <p class="body-text" style="margin-bottom:.85rem">Eres el nuevo analista de datos de <strong>Constructora & Servicios Andinos S.A.C.</strong>, empresa peruana con más de 15 años de operaciones en los sectores de construcción, tecnología, energía, logística y consultoría.</p>
+  <p class="body-text" style="margin-bottom:.85rem">El Gerente de Proyectos te convoca a una reunión de urgencia: la gerencia general necesita presentar al directorio el estado real del portafolio de los últimos meses. Hasta hoy, ese seguimiento se hacía en hojas sueltas y correos dispersos. <strong>Tu misión es construir desde cero el sistema de monitoreo.</strong></p>
+  <p class="body-text">Te entregan un dataset con <strong>25 proyectos</strong> de distintos sectores, estados y tamaños. Tienes datos de avance, presupuesto, equipo, incidencias y riesgo. El resultado de tu trabajo entrará directamente a la presentación del directorio.</p>
+
+  <div class="ctx-grid">
+    <div class="ctx-card"><div class="ctx-label">Empresa</div><div class="ctx-val">Constructora & Servicios Andinos S.A.C.</div></div>
+    <div class="ctx-card"><div class="ctx-label">Tu rol</div><div class="ctx-val">Analista de datos Jr. · Área Control de Proyectos</div></div>
+    <div class="ctx-card"><div class="ctx-label">Tu jefe directo</div><div class="ctx-val">Gerente de Proyectos · Reunión directiva el lunes</div></div>
+    <div class="ctx-card"><div class="ctx-label">Sectores del portafolio</div><div class="ctx-val">Construcción · TI · Energía · Logística · Consultoría</div></div>
+    <div class="ctx-card"><div class="ctx-label">Project Managers</div><div class="ctx-val">Laura Méndez · Carlos Ríos · Ana Torres · Miguel Vega · Sofía Paredes</div></div>
+    <div class="ctx-card"><div class="ctx-label">Moneda</div><div class="ctx-val">Soles peruanos (S/.) · Todos los montos en esta unidad</div></div>
+  </div>
 
   <hr>
 
   <!-- Dataset -->
-  <div class="sec-label">Dataset — copia esto en la hoja "Datos" de tu archivo Excel</div>
-  <div style="overflow-x:auto;margin-bottom:1rem">
-    <table class="dataset-table">
+  <div class="sec-label">Dataset — portafolio completo de proyectos</div>
+  <p style="font-size:13px;color:#5f5e5a;margin-bottom:.75rem;line-height:1.65">Copia estos datos <strong>exactamente</strong> en una hoja llamada <strong>"Datos"</strong> en tu archivo Excel, incluyendo todos los encabezados. No modifiques los valores originales del dataset — trabaja sobre columnas nuevas que agregarás a la derecha.</p>
+
+  <div class="tbl-wrap">
+    <table>
       <thead>
         <tr>
-          <th>ID</th><th>Proyecto</th><th>PM</th><th>Inicio</th><th>Fin Plan</th>
-          <th>Av.Plan%</th><th>Av.Real%</th><th>Presupuesto</th><th>Gasto Real</th><th>Estado</th><th>Incidencias</th>
+          <th>ID</th><th>Proyecto</th><th>Sector</th><th>PM</th><th>Patrocinador</th>
+          <th>F.Inicio</th><th>F.Fin Plan</th><th>F.Fin Real</th>
+          <th>Av.Plan%</th><th>Av.Real%</th>
+          <th>Presupuesto S/.</th><th>Gasto Real S/.</th>
+          <th>Estado</th><th>Prioridad</th><th>N°Equipo</th><th>Incidencias</th><th>Riesgo</th><th>Fase Actual</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>P001</td><td>Construcción Sede Norte</td><td>Laura Méndez</td><td>01/01/2025</td><td>30/06/2025</td><td>80</td><td>65</td><td>120,000</td><td>118,500</td><td>En curso</td><td>3</td></tr>
-        <tr><td>P002</td><td>Digitalización RRHH</td><td>Carlos Ríos</td><td>15/02/2025</td><td>15/05/2025</td><td>100</td><td>100</td><td>45,000</td><td>43,200</td><td>Completado</td><td>0</td></tr>
-        <tr><td>P003</td><td>Sistema de Inventario</td><td>Ana Torres</td><td>01/03/2025</td><td>31/08/2025</td><td>50</td><td>30</td><td>80,000</td><td>52,000</td><td>En curso</td><td>7</td></tr>
-        <tr><td>P004</td><td>Expansión Planta Sur</td><td>Miguel Vega</td><td>10/01/2025</td><td>10/12/2025</td><td>35</td><td>38</td><td>310,000</td><td>95,000</td><td>En curso</td><td>1</td></tr>
-        <tr><td>P005</td><td>Capacitación TI</td><td>Laura Méndez</td><td>01/04/2025</td><td>30/04/2025</td><td>100</td><td>60</td><td>12,000</td><td>9,800</td><td>Retrasado</td><td>2</td></tr>
-        <tr><td>P006</td><td>Auditoría ISO 9001</td><td>Sofía Paredes</td><td>15/03/2025</td><td>15/06/2025</td><td>70</td><td>72</td><td>28,000</td><td>19,500</td><td>En curso</td><td>0</td></tr>
-        <tr><td>P007</td><td>Migración Cloud</td><td>Carlos Ríos</td><td>01/02/2025</td><td>31/07/2025</td><td>60</td><td>40</td><td>95,000</td><td>61,000</td><td>Retrasado</td><td>5</td></tr>
-        <tr><td>P008</td><td>Portal Cliente Web</td><td>Ana Torres</td><td>01/05/2025</td><td>31/10/2025</td><td>10</td><td>8</td><td>55,000</td><td>6,200</td><td>En curso</td><td>0</td></tr>
-        <tr><td>P009</td><td>Renovación Flota</td><td>Miguel Vega</td><td>01/01/2025</td><td>28/02/2025</td><td>100</td><td>100</td><td>180,000</td><td>192,000</td><td>Completado</td><td>1</td></tr>
-        <tr><td>P010</td><td>Seguridad Perimetral</td><td>Sofía Paredes</td><td>15/04/2025</td><td>15/09/2025</td><td>5</td><td>0</td><td>67,000</td><td>0</td><td>Pausado</td><td>4</td></tr>
-        <tr><td>P011</td><td>App Móvil Ventas</td><td>Laura Méndez</td><td>01/03/2025</td><td>30/09/2025</td><td>45</td><td>50</td><td>73,000</td><td>38,000</td><td>En curso</td><td>2</td></tr>
-        <tr><td>P012</td><td>Rediseño Logística</td><td>Carlos Ríos</td><td>01/06/2025</td><td>31/12/2025</td><td>0</td><td>0</td><td>140,000</td><td>0</td><td>No iniciado</td><td>0</td></tr>
-        <tr><td>P013</td><td>BI Comercial</td><td>Ana Torres</td><td>15/01/2025</td><td>15/07/2025</td><td>75</td><td>75</td><td>38,000</td><td>29,000</td><td>En curso</td><td>1</td></tr>
-        <tr><td>P014</td><td>Planta Energía Solar</td><td>Miguel Vega</td><td>01/04/2025</td><td>01/04/2026</td><td>8</td><td>5</td><td>520,000</td><td>28,000</td><td>En curso</td><td>3</td></tr>
-        <tr><td>P015</td><td>Actualización ERP</td><td>Sofía Paredes</td><td>15/02/2025</td><td>15/08/2025</td><td>65</td><td>45</td><td>210,000</td><td>140,000</td><td>Retrasado</td><td>9</td></tr>
+        <tr><td>P001</td><td>Construcción Sede Norte</td><td>Construcción</td><td>Laura Méndez</td><td>Gerencia General</td><td>01/01/2025</td><td>30/06/2025</td><td>—</td><td>80</td><td>65</td><td>120,000</td><td>118,500</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>8</td><td>3</td><td><span class="rsk alto">Alto</span></td><td>Acabados</td></tr>
+        <tr><td>P002</td><td>Digitalización RRHH</td><td>TI</td><td>Carlos Ríos</td><td>Gerencia RRHH</td><td>15/02/2025</td><td>15/05/2025</td><td>10/05/2025</td><td>100</td><td>100</td><td>45,000</td><td>43,200</td><td><span class="st cp">Completado</span></td><td><span class="pri media">Media</span></td><td>4</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Cierre</td></tr>
+        <tr><td>P003</td><td>Sistema de Inventario</td><td>TI</td><td>Ana Torres</td><td>Gerencia Operaciones</td><td>01/03/2025</td><td>31/08/2025</td><td>—</td><td>50</td><td>30</td><td>80,000</td><td>52,000</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>6</td><td>7</td><td><span class="rsk alto">Alto</span></td><td>Desarrollo</td></tr>
+        <tr><td>P004</td><td>Expansión Planta Sur</td><td>Construcción</td><td>Miguel Vega</td><td>Directorio</td><td>10/01/2025</td><td>10/12/2025</td><td>—</td><td>35</td><td>38</td><td>310,000</td><td>95,000</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>12</td><td>1</td><td><span class="rsk medio">Medio</span></td><td>Estructura</td></tr>
+        <tr><td>P005</td><td>Capacitación TI</td><td>Consultoría</td><td>Laura Méndez</td><td>Gerencia TI</td><td>01/04/2025</td><td>30/04/2025</td><td>—</td><td>100</td><td>60</td><td>12,000</td><td>9,800</td><td><span class="st rt">Retrasado</span></td><td><span class="pri media">Media</span></td><td>3</td><td>2</td><td><span class="rsk medio">Medio</span></td><td>Ejecución</td></tr>
+        <tr><td>P006</td><td>Auditoría ISO 9001</td><td>Consultoría</td><td>Sofía Paredes</td><td>Gerencia Calidad</td><td>15/03/2025</td><td>15/06/2025</td><td>—</td><td>70</td><td>72</td><td>28,000</td><td>19,500</td><td><span class="st ec">En curso</span></td><td><span class="pri media">Media</span></td><td>3</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Revisión</td></tr>
+        <tr><td>P007</td><td>Migración Cloud AWS</td><td>TI</td><td>Carlos Ríos</td><td>Gerencia TI</td><td>01/02/2025</td><td>31/07/2025</td><td>—</td><td>60</td><td>40</td><td>95,000</td><td>61,000</td><td><span class="st rt">Retrasado</span></td><td><span class="pri alta">Alta</span></td><td>7</td><td>5</td><td><span class="rsk alto">Alto</span></td><td>Migración</td></tr>
+        <tr><td>P008</td><td>Portal Cliente Web</td><td>TI</td><td>Ana Torres</td><td>Gerencia Comercial</td><td>01/05/2025</td><td>31/10/2025</td><td>—</td><td>10</td><td>8</td><td>55,000</td><td>6,200</td><td><span class="st ec">En curso</span></td><td><span class="pri media">Media</span></td><td>5</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Diseño UX</td></tr>
+        <tr><td>P009</td><td>Renovación Flota Vehicular</td><td>Logística</td><td>Miguel Vega</td><td>Gerencia Logística</td><td>01/01/2025</td><td>28/02/2025</td><td>15/03/2025</td><td>100</td><td>100</td><td>180,000</td><td>192,000</td><td><span class="st cp">Completado</span></td><td><span class="pri alta">Alta</span></td><td>6</td><td>1</td><td><span class="rsk bajo">Bajo</span></td><td>Cierre</td></tr>
+        <tr><td>P010</td><td>Seguridad Perimetral</td><td>Construcción</td><td>Sofía Paredes</td><td>Gerencia General</td><td>15/04/2025</td><td>15/09/2025</td><td>—</td><td>5</td><td>0</td><td>67,000</td><td>0</td><td><span class="st ps">Pausado</span></td><td><span class="pri baja">Baja</span></td><td>4</td><td>4</td><td><span class="rsk alto">Alto</span></td><td>Planificación</td></tr>
+        <tr><td>P011</td><td>App Móvil Ventas</td><td>TI</td><td>Laura Méndez</td><td>Gerencia Comercial</td><td>01/03/2025</td><td>30/09/2025</td><td>—</td><td>45</td><td>50</td><td>73,000</td><td>38,000</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>6</td><td>2</td><td><span class="rsk medio">Medio</span></td><td>Testing</td></tr>
+        <tr><td>P012</td><td>Rediseño Logística</td><td>Logística</td><td>Carlos Ríos</td><td>Gerencia Logística</td><td>01/06/2025</td><td>31/12/2025</td><td>—</td><td>0</td><td>0</td><td>140,000</td><td>0</td><td><span class="st ni">No iniciado</span></td><td><span class="pri media">Media</span></td><td>8</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Inicio</td></tr>
+        <tr><td>P013</td><td>BI Comercial</td><td>TI</td><td>Ana Torres</td><td>Gerencia Comercial</td><td>15/01/2025</td><td>15/07/2025</td><td>—</td><td>75</td><td>75</td><td>38,000</td><td>29,000</td><td><span class="st ec">En curso</span></td><td><span class="pri media">Media</span></td><td>4</td><td>1</td><td><span class="rsk bajo">Bajo</span></td><td>Reportería</td></tr>
+        <tr><td>P014</td><td>Planta Energía Solar</td><td>Energía</td><td>Miguel Vega</td><td>Directorio</td><td>01/04/2025</td><td>01/04/2026</td><td>—</td><td>8</td><td>5</td><td>520,000</td><td>28,000</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>15</td><td>3</td><td><span class="rsk alto">Alto</span></td><td>Ingeniería</td></tr>
+        <tr><td>P015</td><td>Actualización ERP SAP</td><td>TI</td><td>Sofía Paredes</td><td>Gerencia General</td><td>15/02/2025</td><td>15/08/2025</td><td>—</td><td>65</td><td>45</td><td>210,000</td><td>140,000</td><td><span class="st rt">Retrasado</span></td><td><span class="pri alta">Alta</span></td><td>10</td><td>9</td><td><span class="rsk alto">Alto</span></td><td>Configuración</td></tr>
+        <tr><td>P016</td><td>Habilitación Almacén Central</td><td>Construcción</td><td>Laura Méndez</td><td>Gerencia Operaciones</td><td>01/02/2025</td><td>31/05/2025</td><td>28/05/2025</td><td>100</td><td>100</td><td>95,000</td><td>91,500</td><td><span class="st cp">Completado</span></td><td><span class="pri alta">Alta</span></td><td>7</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Cierre</td></tr>
+        <tr><td>P017</td><td>Seguridad y Salud Laboral</td><td>Consultoría</td><td>Carlos Ríos</td><td>Gerencia RRHH</td><td>01/03/2025</td><td>30/06/2025</td><td>—</td><td>55</td><td>55</td><td>22,000</td><td>13,000</td><td><span class="st ec">En curso</span></td><td><span class="pri media">Media</span></td><td>4</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Implementación</td></tr>
+        <tr><td>P018</td><td>Red Fibra Óptica Oficinas</td><td>TI</td><td>Ana Torres</td><td>Gerencia TI</td><td>15/01/2025</td><td>15/04/2025</td><td>02/06/2025</td><td>100</td><td>100</td><td>48,000</td><td>56,000</td><td><span class="st cp">Completado</span></td><td><span class="pri media">Media</span></td><td>5</td><td>3</td><td><span class="rsk bajo">Bajo</span></td><td>Cierre</td></tr>
+        <tr><td>P019</td><td>Plataforma E-Learning</td><td>Consultoría</td><td>Miguel Vega</td><td>Gerencia RRHH</td><td>01/05/2025</td><td>31/10/2025</td><td>—</td><td>5</td><td>3</td><td>35,000</td><td>2,500</td><td><span class="st ec">En curso</span></td><td><span class="pri baja">Baja</span></td><td>3</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Diseño</td></tr>
+        <tr><td>P020</td><td>Tanques de Almacenamiento</td><td>Energía</td><td>Sofía Paredes</td><td>Gerencia Operaciones</td><td>01/03/2025</td><td>30/11/2025</td><td>—</td><td>40</td><td>22</td><td>275,000</td><td>98,000</td><td><span class="st rt">Retrasado</span></td><td><span class="pri alta">Alta</span></td><td>11</td><td>6</td><td><span class="rsk alto">Alto</span></td><td>Montaje</td></tr>
+        <tr><td>P021</td><td>Diseño Vial Zona Industrial</td><td>Construcción</td><td>Laura Méndez</td><td>Directorio</td><td>10/04/2025</td><td>10/01/2026</td><td>—</td><td>12</td><td>10</td><td>430,000</td><td>47,000</td><td><span class="st ec">En curso</span></td><td><span class="pri alta">Alta</span></td><td>14</td><td>2</td><td><span class="rsk medio">Medio</span></td><td>Topografía</td></tr>
+        <tr><td>P022</td><td>CRM Fuerza de Ventas</td><td>TI</td><td>Carlos Ríos</td><td>Gerencia Comercial</td><td>01/04/2025</td><td>30/09/2025</td><td>—</td><td>20</td><td>20</td><td>62,000</td><td>13,500</td><td><span class="st ec">En curso</span></td><td><span class="pri media">Media</span></td><td>5</td><td>1</td><td><span class="rsk bajo">Bajo</span></td><td>Configuración</td></tr>
+        <tr><td>P023</td><td>Subestación Eléctrica Norte</td><td>Energía</td><td>Ana Torres</td><td>Gerencia Operaciones</td><td>01/01/2025</td><td>30/06/2025</td><td>—</td><td>90</td><td>60</td><td>185,000</td><td>162,000</td><td><span class="st rt">Retrasado</span></td><td><span class="pri alta">Alta</span></td><td>9</td><td>8</td><td><span class="rsk alto">Alto</span></td><td>Instalación</td></tr>
+        <tr><td>P024</td><td>Gestión Documental Digital</td><td>Consultoría</td><td>Miguel Vega</td><td>Gerencia General</td><td>15/03/2025</td><td>15/07/2025</td><td>—</td><td>50</td><td>52</td><td>29,000</td><td>16,000</td><td><span class="st ec">En curso</span></td><td><span class="pri baja">Baja</span></td><td>3</td><td>0</td><td><span class="rsk bajo">Bajo</span></td><td>Digitalización</td></tr>
+        <tr><td>P025</td><td>Ampliación Red Gas Natural</td><td>Energía</td><td>Sofía Paredes</td><td>Directorio</td><td>01/02/2025</td><td>31/01/2026</td><td>—</td><td>25</td><td>10</td><td>680,000</td><td>89,000</td><td><span class="st rt">Retrasado</span></td><td><span class="pri alta">Alta</span></td><td>18</td><td>11</td><td><span class="rsk alto">Alto</span></td><td>Excavación</td></tr>
       </tbody>
     </table>
   </div>
 
+  <div class="tip"><strong>Nota sobre el campo F.Fin Real:</strong> Solo tiene valor en proyectos con estado "Completado". Los guiones (—) indican que el proyecto aún está activo — tratalos como celdas vacías en Excel. El campo <strong>N°Equipo</strong> indica la cantidad de personas asignadas al proyecto.</div>
+
   <hr>
 
-  <!-- Tareas -->
+  <!-- TAREA 1 -->
   <div class="sec-label">Tareas a completar</div>
 
-  <!-- Tarea 1 -->
   <div class="task">
-    <div class="task-header">
-      <div class="task-num" style="background:#eaf3de;color:#27500a">1</div>
-      <div class="task-title">Limpieza y columnas calculadas — Excel</div>
-      <div class="task-time">⏱ 20 min</div>
+    <div class="task-hdr">
+      <div class="tnum" style="background:#eaf3de;color:#27500a">1</div>
+      <div class="t-info">
+        <div class="t-name">Limpieza, validación y columnas calculadas</div>
+        <div class="t-meta">Excel · Hoja: "Datos" · Columnas nuevas a la derecha del dataset</div>
+      </div>
+      <div class="t-time">⏱ 30 min</div>
     </div>
     <div class="task-body">
-      <p class="task-desc">En la hoja <strong>"Datos"</strong>, agrega estas columnas calculadas a la derecha del dataset:</p>
-      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Brecha_Avance</strong> = Avance_Plan% – Avance_Real%</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Variacion_Presupuesto%</strong> = ((Gasto_Real – Presupuesto) / Presupuesto) × 100</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Semaforo</strong>: Verde si Brecha ≤ 0 · Amarillo si Brecha entre 1 y 15 · Rojo si Brecha > 15</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Aplicar formato condicional: colorear la fila completa según el valor del Semáforo</div></div>
+      <p class="t-desc">El dataset es la base de todo el sistema. Antes de analizar, hay que estructurarlo correctamente. Agrega las siguientes columnas calculadas usando <strong>exclusivamente fórmulas de Excel</strong> — ningún valor puede escribirse a mano. Si el dato origen cambia, tu columna debe actualizarse automáticamente.</p>
+
+      <div class="sub-label">Columnas calculadas obligatorias</div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Brecha_Avance</strong> = Av.Plan% – Av.Real%<br><em>Positivo = el proyecto está retrasado · Negativo = el proyecto está adelantado · 0 = exactamente en tiempo</em></div></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Variacion_Presupuesto%</strong> = ((Gasto_Real – Presupuesto) / Presupuesto) × 100<br><em>Positivo = sobreejercicio (gastó más de lo previsto) · Negativo = subejercicio (gastó menos) · Para proyectos No iniciados o Pausados con Gasto=0 mostrar "N/A"</em></div></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Monto_Brecha_S/.</strong> = Gasto_Real – Presupuesto<br><em>Muestra la diferencia en soles. Negativo = sobrante presupuestal · Positivo = déficit</em></div></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Eficiencia_Costo</strong> = Avance_Real% / (Gasto_Real / Presupuesto × 100)<br><em>Un valor mayor a 1 indica que el proyecto avanza más de lo que gasta proporcionalmente (eficiente). Menor a 1 indica lo contrario. Si Gasto_Real = 0, mostrar "N/A"</em></div></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Semaforo</strong> con lógica de cuatro niveles:<br>
+        — <strong style="color:#27500a">Verde</strong>: Brecha_Avance ≤ 0 (adelantado o en tiempo)<br>
+        — <strong style="color:#633806">Amarillo</strong>: Brecha_Avance entre 1 y 15 (retraso leve)<br>
+        — <strong style="color:#791f1f">Rojo</strong>: Brecha_Avance mayor a 15 (retraso crítico)<br>
+        — <strong style="color:#5f5e5a">Gris</strong>: Estado = "Pausado" o "No iniciado" (independiente de la brecha)
+      </div></div>
+
+      <div class="formula">=SI(O(N2="Pausado",N2="No iniciado"),"Gris",SI(R2&lt;=0,"Verde",SI(R2&lt;=15,"Amarillo","Rojo")))<br><em style="color:#888780">Donde R2 = Brecha_Avance · N2 = Estado · Ajusta las referencias a tu hoja</em></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Dias_Retraso_Entrega</strong>: Solo para proyectos Completados (F.Fin Real tiene valor).<br>= F.Fin_Real – F.Fin_Plan (en días)<br><em>Positivo = entregó tarde · Negativo = entregó antes · Para proyectos activos mostrar "—"</em></div></div>
+
+      <div class="formula">=SI(H2="—","—",DIASLABORABLES(G2,H2))<br><em style="color:#888780">Donde G2 = F.Fin Plan · H2 = F.Fin Real · Usa DÍAS o DIASLABORABLES según criterio</em></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Costo_Por_Persona_S/.</strong> = Gasto_Real / N°Equipo<br><em>Indica cuánto se ha gastado por persona asignada al proyecto. Si N°Equipo = 0, mostrar "N/A"</em></div></div>
+
+      <div class="li"><div class="li-dot g"></div><div class="li-text"><strong>Alerta_Doble</strong>: Campo de alerta máxima. Valor "CRÍTICO" si el proyecto cumple AMBAS condiciones simultáneamente: Semáforo = Rojo Y Riesgo = "Alto". En cualquier otro caso, dejar en blanco.<br><em>Este campo identifica los proyectos que necesitan intervención inmediata de la gerencia</em></div></div>
+
+      <div class="sub-label">Formato condicional obligatorio</div>
+      <div class="li"><div class="li-dot g"></div><div class="li-text">Colorear el fondo de <strong>toda la fila</strong> según el valor de la columna Semáforo: Verde claro para Verde, Amarillo claro para Amarillo, Rojo claro para Rojo, Gris claro para Gris</div></div>
+      <div class="li"><div class="li-dot g"></div><div class="li-text">En la columna <strong>Alerta_Doble</strong>, resaltar en rojo intenso con texto blanco y negrita las celdas que digan "CRÍTICO"</div></div>
+      <div class="li"><div class="li-dot g"></div><div class="li-text">En la columna <strong>Variacion_Presupuesto%</strong>, aplicar escala de color: verde para valores negativos (bajo presupuesto) y rojo para valores positivos (sobre presupuesto)</div></div>
+
+      <div class="tip"><strong>Consejo de calidad:</strong> Antes de seguir con las demás tareas, verifica que tus fórmulas funcionen correctamente en al menos 3 casos distintos: un proyecto completado, uno pausado y uno retrasado. Un error en esta hoja contamina todo el análisis posterior.</div>
     </div>
   </div>
 
-  <!-- Tarea 2 -->
+  <!-- TAREA 2 -->
   <div class="task">
-    <div class="task-header">
-      <div class="task-num" style="background:#e6f1fb;color:#185fa5">2</div>
-      <div class="task-title">Hoja de KPIs — Excel</div>
-      <div class="task-time">⏱ 25 min</div>
+    <div class="task-hdr">
+      <div class="tnum" style="background:#e6f1fb;color:#185fa5">2</div>
+      <div class="t-info">
+        <div class="t-name">Hoja de KPIs del portafolio</div>
+        <div class="t-meta">Excel · Hoja nueva: "KPIs" · Todas las fórmulas vinculadas a la hoja "Datos"</div>
+      </div>
+      <div class="t-time">⏱ 40 min</div>
     </div>
     <div class="task-body">
-      <p class="task-desc">Crea una hoja nueva llamada <strong>"KPIs"</strong> y calcula los siguientes indicadores usando fórmulas (no valores escritos a mano):</p>
-      <div class="item"><div class="dot g"></div><div class="item-text">Cantidad y porcentaje de proyectos por estado (En curso, Completado, Retrasado, Pausado, No iniciado)</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Promedio de Brecha_Avance por cada Project Manager</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Proyecto con mayor sobreejercicio presupuestal (%) — nombre y valor</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Total de incidencias agrupadas por estado</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Índice general de cumplimiento = SUMA(Avance_Real%) / SUMA(Avance_Plan%) × 100</div></div>
+      <p class="t-desc">Crea una hoja nueva llamada <strong>"KPIs"</strong> estructurada en secciones claramente diferenciadas. Todos los indicadores deben calcularse con fórmulas dinámicas — si agregas o modificas un dato en la hoja "Datos", los KPIs deben actualizarse automáticamente sin intervención manual. Usa SUMAR.SI, CONTAR.SI, PROMEDIO.SI, BUSCARV, INDICE+COINCIDIR y similares según corresponda.</p>
+
+      <div class="sub-label">Sección 1 — Resumen general del portafolio</div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Total de proyectos</strong> en el portafolio</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Cantidad y porcentaje</strong> de proyectos por cada estado: En curso, Completado, Retrasado, Pausado, No iniciado</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Presupuesto total</strong> del portafolio (S/.) · <strong>Gasto real total</strong> (S/.) · <strong>Diferencia</strong> (S/.) y <strong>Variación %</strong></div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Índice de Cumplimiento General (ICG)</strong> = SUMA(Av.Real%) / SUMA(Av.Plan%) × 100<br><em>Interpreta el resultado: ¿Qué significa un ICG de 75%? Escribe una celda de texto con tu interpretación</em></div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Total de incidencias</strong> del portafolio · <strong>Promedio de incidencias</strong> por proyecto · <strong>Proyecto con más incidencias</strong> (nombre y cantidad)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Total de personas</strong> trabajando en proyectos activos (suma de N°Equipo de proyectos En curso)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Cantidad de proyectos en alerta CRÍTICO</strong> (Alerta_Doble = "CRÍTICO") y su presupuesto total comprometido</div></div>
+
+      <div class="sub-label">Sección 2 — KPIs por Project Manager</div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Para cada PM (Laura Méndez, Carlos Ríos, Ana Torres, Miguel Vega, Sofía Paredes):<br>
+        — Número de proyectos a cargo<br>
+        — Brecha promedio de avance<br>
+        — Total de incidencias acumuladas<br>
+        — Presupuesto total gestionado (S/.)<br>
+        — Gasto real total (S/.)<br>
+        — Variación presupuestal promedio (%)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Ranking de PMs</strong> de mejor a peor desempeño según brecha promedio de avance (menor brecha = mejor). Escríbelo como una tabla ordenada.</div></div>
+
+      <div class="sub-label">Sección 3 — KPIs por sector</div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Para cada sector (Construcción, TI, Energía, Logística, Consultoría):<br>
+        — N° de proyectos<br>
+        — Presupuesto total (S/.) y Gasto real (S/.)<br>
+        — Variación presupuestal del sector (%)<br>
+        — Brecha de avance promedio<br>
+        — Total de incidencias</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Sector más eficiente</strong> (menor brecha promedio) y <strong>sector con mayor sobreejercicio</strong></div></div>
+
+      <div class="sub-label">Sección 4 — Rankings y alertas</div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Top 3 proyectos más retrasados</strong>: nombre, PM, Brecha_Avance, Estado</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Top 3 proyectos con mayor sobreejercicio</strong> en monto S/.: nombre, PM, Monto_Brecha_S/., Variacion_Presupuesto%</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Top 3 proyectos más eficientes</strong> según Eficiencia_Costo: nombre, sector, valor</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text"><strong>Proyectos por nivel de riesgo</strong>: cantidad y presupuesto total por nivel (Alto, Medio, Bajo)</div></div>
+
+      <div class="sub-label">Sección 5 — Análisis de proyectos completados</div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Promedio de días de retraso/adelanto en la entrega (campo Dias_Retraso_Entrega)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Porcentaje de proyectos completados que terminaron <strong>dentro del presupuesto</strong> (Variacion_Presupuesto% ≤ 0)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Porcentaje de proyectos completados que terminaron <strong>a tiempo o antes</strong> (Dias_Retraso_Entrega ≤ 0)</div></div>
+      <div class="li"><div class="li-dot b"></div><div class="li-text">Proyecto completado con <strong>mayor ahorro</strong> y proyecto completado con <strong>mayor costo adicional</strong></div></div>
+
+      <div class="tip"><strong>Consejo de presentación:</strong> Separa cada sección con colores de fondo distintos o bordes gruesos. Un gerente debe poder encontrar cualquier KPI en menos de 10 segundos. Si la hoja parece un mar de números sin estructura, no cumple su propósito.</div>
     </div>
   </div>
 
-  <!-- Tarea 3 -->
+  <!-- TAREA 3 -->
   <div class="task">
-    <div class="task-header">
-      <div class="task-num" style="background:#faeeda;color:#633806">3</div>
-      <div class="task-title">Dashboard visual — Excel o Power BI</div>
-      <div class="task-time">⏱ 35 min</div>
+    <div class="task-hdr">
+      <div class="tnum" style="background:#faeeda;color:#633806">3</div>
+      <div class="t-info">
+        <div class="t-name">Dashboard ejecutivo del portafolio</div>
+        <div class="t-meta">Excel (hoja "Dashboard") o Power BI (.pbix) · Puedes usar ambos</div>
+      </div>
+      <div class="t-time">⏱ 50 min</div>
     </div>
     <div class="task-body">
-      <p class="task-desc">Crea un dashboard que permita visualizar el estado del portafolio. Debe incluir mínimo:</p>
-      <div class="item"><div class="dot g"></div><div class="item-text">Gráfico de distribución de proyectos por estado (dona o barras)</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Gráfico comparativo: Avance Planificado vs Avance Real por proyecto</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Tabla o gráfico de desempeño por Project Manager</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Filtro funcional por Project Manager o por Estado del proyecto</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Indicador visual del índice general de cumplimiento (puede ser una tarjeta o velocímetro)</div></div>
-      <p class="task-desc" style="margin-top:.65rem;font-style:italic">Si usas Power BI, entrega el archivo .pbix además del Excel.</p>
-    </div>
-  </div>
+      <p class="t-desc">El dashboard es la pieza más visible del sistema. Imagina que un gerente abre este archivo a las 7 AM antes de la reunión de directorio y tiene 90 segundos para entender el estado del portafolio. <strong>Todo lo importante debe ser evidente sin necesidad de explicación verbal.</strong></p>
 
-  <!-- Tarea 4 -->
-  <div class="task">
-    <div class="task-header">
-      <div class="task-num" style="background:#fcebeb;color:#791f1f">4</div>
-      <div class="task-title">Automatización con Macro / VBA — Excel</div>
-      <div class="task-time">⏱ 30 min</div>
-    </div>
-    <div class="task-body">
-      <p class="task-desc">En el mismo archivo Excel, crea una macro que al ejecutarse haga lo siguiente:</p>
-      <div class="item"><div class="dot g"></div><div class="item-text">Reaplicar automáticamente el formato de semáforo (colores) sobre toda la tabla de datos</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Generar en una nueva hoja llamada <strong>"Reporte"</strong> un resumen con: fecha de generación, total de proyectos, cantidad por estado y los 3 proyectos con mayor brecha de avance</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">Mostrar un mensaje (MsgBox) al terminar indicando cuántos proyectos están en estado crítico (Semáforo Rojo)</div></div>
-      <div class="item"><div class="dot g"></div><div class="item-text">El botón para ejecutar la macro debe estar visible en el dashboard</div></div>
-      <div class="code">
-        Tip: Guarda el archivo como .xlsm (Excel habilitado para macros)<br>
-        para que el código VBA se conserve al enviarlo.
+      <div class="sub-label">Visualizaciones obligatorias</div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Gráfico de distribución por estado</strong>: Dona o barras horizontales. Cada segmento con su color de semáforo correspondiente (verde, amarillo, rojo, gris). Incluir etiquetas con N° de proyectos y porcentaje.</div></div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Gráfico de avance planificado vs real</strong>: Barras agrupadas o barras de progreso por proyecto. Ordenar de mayor a menor brecha para que los más críticos aparezcan primero. El eje debe ir de 0% a 100%.</div></div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Gráfico de presupuesto vs gasto por sector</strong>: Barras agrupadas. Incluir la línea o punto que representa el presupuesto asignado vs el gasto real. Permite detectar qué sectores están sobre o bajo presupuesto.</div></div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Tabla resumen del portafolio</strong>: Una fila por proyecto con columnas: ID, Proyecto, PM, Av.Real%, Brecha, Gasto Real, Variacion%, Semáforo. El fondo de cada fila debe seguir el color del semáforo. Esta tabla debe ser filtrable.</div></div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Tarjetas KPI</strong> en la parte superior del dashboard. Mínimo 5 tarjetas:<br>
+        — Índice de Cumplimiento General (%)<br>
+        — Proyectos en Semáforo Rojo (N°)<br>
+        — Proyectos CRÍTICOS (N°)<br>
+        — Total Incidencias activas<br>
+        — Variación presupuestal total del portafolio (%)
+      </div></div>
+
+      <div class="li"><div class="li-dot a"></div><div class="li-text"><strong>Gráfico de desempeño por PM</strong>: Barras horizontales que muestren la brecha promedio de avance de cada Project Manager. Ordenar de mejor a peor. Colores diferenciados por PM.</div></div>
+
+      <div class="sub-label">Interactividad obligatoria</div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Filtro (segmentador de datos en Excel / slicer en Power BI) por <strong>Project Manager</strong></div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Filtro por <strong>Sector</strong></div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Filtro por <strong>Estado</strong> del proyecto</div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Filtro por <strong>Nivel de Riesgo</strong></div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Al aplicar cualquier filtro, <strong>todas las visualizaciones y tarjetas KPI deben actualizarse simultáneamente</strong></div></div>
+
+      <div class="sub-label">Estándares de calidad del dashboard</div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">El dashboard debe caber en una sola pantalla sin necesidad de hacer scroll horizontal</div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Todos los gráficos deben tener título claro, ejes etiquetados y unidades visibles (%, S/., N°)</div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">No uses más de 4 colores distintos en el dashboard (además de los colores del semáforo)</div></div>
+      <div class="li"><div class="li-dot a"></div><div class="li-text">Incluye en un rincón la fecha de última actualización del reporte</div></div>
+
+      <div class="bonus-box">
+        <div class="bonus-label">⭐ Bonus Power BI — Gráfico de cuadrantes</div>
+        <div class="bonus-text">Agrega un gráfico de dispersión (scatter plot) donde cada punto representa un proyecto. Eje X = Brecha_Avance (retraso) · Eje Y = Variacion_Presupuesto% (sobreejercicio). Divide el gráfico en 4 cuadrantes con líneas de referencia en 0: los proyectos en el cuadrante superior derecho (retrasados Y sobre presupuesto) son los que requieren intervención inmediata. El tamaño del punto puede representar el Presupuesto del proyecto. Etiqueta cada punto con el ID del proyecto. Entrega el archivo .pbix además del .xlsm.</div>
       </div>
     </div>
   </div>
 
-  <hr>
-
-  <!-- Reglas -->
-  <div class="sec-label">Reglas importantes</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem">
-    <div style="background:#f7f5f0;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a;border:1px solid #e5e3dc">
-      <div style="font-weight:500;margin-bottom:4px">✅ Se evalúa</div>
-      <div style="color:#5f5e5a;line-height:1.6">Lógica y criterio analítico · Fórmulas correctas · Macro funcional · Claridad del dashboard</div>
+  <!-- TAREA 4 -->
+  <div class="task">
+    <div class="task-hdr">
+      <div class="tnum" style="background:#fcebeb;color:#791f1f">4</div>
+      <div class="t-info">
+        <div class="t-name">Automatización con Macro / VBA</div>
+        <div class="t-meta">Excel VBA · Guardar obligatoriamente como .xlsm · Botón visible en el dashboard</div>
+      </div>
+      <div class="t-time">⏱ 45 min</div>
     </div>
-    <div style="background:#f7f5f0;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a;border:1px solid #e5e3dc">
-      <div style="font-weight:500;margin-bottom:4px">❌ No se evalúa</div>
-      <div style="color:#5f5e5a;line-height:1.6">Diseño visual elaborado · Perfección estética · Uso de herramientas externas al stack indicado</div>
+    <div class="task-body">
+      <p class="t-desc">La macro es el motor del sistema. Debe funcionar con un solo clic, sin errores, y producir un reporte ejecutivo completo y ordenado. El objetivo es que cualquier persona — incluso sin conocimientos técnicos — pueda presionar el botón y obtener el informe listo para presentar.</p>
+
+      <div class="sub-label">Acción 1 — Reaplicar semáforo</div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">La macro debe recorrer todas las filas de la hoja "Datos" y reaplicar automáticamente los colores de semáforo sobre toda la tabla, incluyendo filas nuevas que se hayan agregado después de la última ejecución</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Usar condicionales VBA para asignar el color de fondo correcto según el valor de la columna Semáforo de cada fila</div></div>
+
+      <div class="sub-label">Acción 2 — Generar hoja "Reporte_Ejecutivo"</div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Si la hoja "Reporte_Ejecutivo" ya existe, eliminarla y crearla nuevamente (limpia). Si no existe, crearla.</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">El reporte debe incluir las siguientes secciones con formato limpio y legible:</div></div>
+
+      <div style="margin-left:1.5rem">
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Encabezado</strong>: Logo o nombre de empresa, título "Reporte Ejecutivo de Proyectos", fecha y hora exacta de generación</div></div>
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Resumen del portafolio</strong>: Total de proyectos, cantidad por estado, presupuesto total vs gasto real, variación en S/. y %</div></div>
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Proyectos CRÍTICOS</strong>: Lista completa de proyectos con Alerta_Doble = "CRÍTICO". Columnas: ID, Proyecto, PM, Brecha, Incidencias, Riesgo. Fondo rojo claro.</div></div>
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Top 3 más retrasados</strong>: Nombre, PM, Brecha_Avance, Estado. Ordenados de mayor a menor brecha.</div></div>
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Top 3 mayor sobreejercicio</strong>: Nombre, PM, Variacion_Presupuesto%, Monto_Brecha_S/.</div></div>
+        <div class="li"><div class="li-dot r"></div><div class="li-text"><strong>Proyectos en Semáforo Verde</strong>: Lista de proyectos que van bien o adelantados, para reconocimiento.</div></div>
+      </div>
+
+      <div class="sub-label">Acción 3 — Aplicar formato al reporte</div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Los encabezados de cada sección deben tener fondo oscuro y texto blanco</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Los datos críticos deben tener fondo rojo claro</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Las columnas deben ajustarse automáticamente al contenido (AutoFit)</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">El reporte debe verse limpio al imprimir (configurar área de impresión y orientación landscape)</div></div>
+
+      <div class="sub-label">Acción 4 — MsgBox de cierre</div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Al terminar, mostrar un MsgBox con el siguiente resumen:<br>
+        — N° de proyectos en Semáforo Rojo<br>
+        — N° de proyectos CRÍTICOS<br>
+        — Total de incidencias activas<br>
+        — Variación presupuestal total del portafolio (%)<br>
+        — Texto al pie: "Reporte generado el [fecha/hora]"
+      </div></div>
+
+      <div class="sub-label">Botón de ejecución</div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">Insertar un botón visible en la hoja Dashboard con el texto <strong>"Generar Reporte Ejecutivo"</strong>, vinculado a la macro</div></div>
+      <div class="li"><div class="li-dot r"></div><div class="li-text">El botón debe tener un color que lo haga fácilmente identificable (no el gris por defecto)</div></div>
+
+      <div class="code-block">
+' Estructura sugerida — puedes adaptarla libremente<br>
+Sub GenerarReporteEjecutivo()<br>
+&nbsp;&nbsp;' === PASO 1: Reaplicar semáforo en hoja Datos ===<br>
+&nbsp;&nbsp;Call ReaplicarSemaforo<br><br>
+&nbsp;&nbsp;' === PASO 2: Preparar hoja Reporte_Ejecutivo ===<br>
+&nbsp;&nbsp;Call PrepararHojaReporte<br><br>
+&nbsp;&nbsp;' === PASO 3: Escribir encabezado y fecha ===<br>
+&nbsp;&nbsp;Call EscribirEncabezado<br><br>
+&nbsp;&nbsp;' === PASO 4: Calcular y escribir KPIs ===<br>
+&nbsp;&nbsp;Call EscribirResumenPortafolio<br><br>
+&nbsp;&nbsp;' === PASO 5: Listar proyectos críticos y rankings ===<br>
+&nbsp;&nbsp;Call EscribirAlertas<br><br>
+&nbsp;&nbsp;' === PASO 6: Aplicar formato al reporte ===<br>
+&nbsp;&nbsp;Call AplicarFormatoReporte<br><br>
+&nbsp;&nbsp;' === PASO 7: MsgBox de cierre ===<br>
+&nbsp;&nbsp;Dim criticos As Integer, rojos As Integer<br>
+&nbsp;&nbsp;' [calcular valores antes del MsgBox]<br>
+&nbsp;&nbsp;MsgBox "REPORTE GENERADO" & Chr(13) & _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"Proyectos Semáforo Rojo: " & rojos & Chr(13) & _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"Proyectos CRÍTICOS: " & criticos & Chr(13) & _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"Generado: " & Now(), vbInformation<br>
+End Sub
+      </div>
+
+      <div class="tip"><strong>Importante:</strong> Agrega comentarios en cada bloque del código explicando qué hace y por qué. Si una parte no funciona perfectamente, explica en un comentario tu intención. La claridad del código cuenta tanto como su funcionamiento.</div>
     </div>
   </div>
-  <div style="font-size:13.5px;color:#5f5e5a;line-height:1.65;background:#f4f2ed;border-radius:10px;padding:.75rem 1rem;border:1px solid #e5e3dc">
-    💡 Si algo no te sale, deja un comentario en la celda o en el código explicando qué intentabas hacer. Eso también se evalúa.
+
+  <hr>
+
+  <!-- Rúbrica -->
+  <div class="sec-label">Criterios de evaluación</div>
+  <table class="crit-table">
+    <thead>
+      <tr><th>Tarea</th><th>Criterio</th><th>Peso</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Tarea 1</strong> — Datos</td><td>Fórmulas correctas y dinámicas · Lógica del semáforo de 4 niveles · Formato condicional aplicado · Columnas sin errores</td><td><span class="weight">20%</span></td></tr>
+      <tr><td><strong>Tarea 2</strong> — KPIs</td><td>Las 5 secciones presentes · Fórmulas dinámicas vinculadas · Rankings correctos · Interpretación del ICG · Estructura visual clara</td><td><span class="weight">25%</span></td></tr>
+      <tr><td><strong>Tarea 3</strong> — Dashboard</td><td>Mínimo 6 visualizaciones · Filtros funcionales · KPIs en tarjetas · Dashboard en una pantalla · Títulos y unidades visibles</td><td><span class="weight">30%</span></td></tr>
+      <tr><td><strong>Tarea 4</strong> — Macro</td><td>Macro corre sin errores · Genera Reporte_Ejecutivo completo · Formato aplicado · MsgBox correcto · Botón funcional · Código comentado</td><td><span class="weight">25%</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:1rem">Lo que se evalúa y lo que no</div>
+  <div class="rules-grid">
+    <div class="rule-card rule-yes">
+      <div class="rule-title">✅ Se evalúa</div>
+      Lógica analítica · Criterio para manejar casos especiales (Gasto=0, proyectos pausados) · Fórmulas dinámicas · Macro funcional · Dashboard comprensible · Comentarios en el código · Interpretación de los datos
+    </div>
+    <div class="rule-card rule-no">
+      <div class="rule-title">❌ No se evalúa</div>
+      Diseño visual elaborado · Perfección estética · Uso de herramientas externas al stack indicado · Velocidad de ejecución de fórmulas · Que todo esté perfecto — lo importante es el razonamiento
+    </div>
   </div>
 
   <hr>
 
   <!-- Entrega -->
-  <div class="cta">
-    <div class="cta-title">¿Cómo entregar?</div>
-    <p class="cta-sub">Responde este correo adjuntando tu(s) archivo(s). Si tienes dudas, escríbenos antes de las 6:00 PM.</p>
-    <div class="entrega-grid">
-      <div class="entrega-card">
-        <div class="entrega-label">Archivo obligatorio</div>
-        PruebaTecnica_[TuNombre].xlsm
-      </div>
-      <div class="entrega-card">
-        <div class="entrega-label">Opcional (bonus)</div>
-        Dashboard_[TuNombre].pbix
-      </div>
-      <div class="entrega-card">
-        <div class="entrega-label">Asunto del correo</div>
-        Prueba Técnica – [Tu nombre]
-      </div>
-      <div class="entrega-card">
-        <div class="entrega-label">Plazo máximo</div>
-        Hoy · 9:00 PM
-      </div>
-    </div>
+  <div class="sec-label">Cómo entregar</div>
+  <p style="font-size:13.5px;color:#5f5e5a;line-height:1.7;margin-bottom:.85rem">Responde este correo adjuntando tus archivos. Antes de enviar, verifica que el archivo <strong>.xlsm abre sin errores</strong> y que la macro funciona con un solo clic. Si tienes alguna duda técnica, escríbenos <strong>antes de las 9:00 AM del sábado 03 de mayo</strong> — después de esa hora no habrá soporte para garantizar igualdad de condiciones entre candidatos.</p>
+
+  <div class="entrega-grid">
+    <div class="e-card"><div class="e-label">Archivo principal (obligatorio)</div><div class="e-val">PruebaTecnica_[TuNombre].xlsm</div></div>
+    <div class="e-card"><div class="e-label">Archivo opcional (bonus)</div><div class="e-val">Dashboard_[TuNombre].pbix</div></div>
+    <div class="e-card"><div class="e-label">Asunto del correo</div><div class="e-val">Prueba Técnica – [Tu nombre completo]</div></div>
+    <div class="e-card deadline"><div class="e-label">Plazo máximo</div><div class="e-val">Sábado 03 mayo 2025 · 12:00 PM</div></div>
   </div>
 
-  <div style="text-align:center;font-size:11.5px;color:#b4b2a9;margin-top:1.5rem">
-    [Empresa] · Lima, Perú · Cualquier consulta responderemos el mismo día.
+  <div class="alert danger" style="margin-top:1rem">
+    🚫 <div>Hora de entrega limite las 12:00 p.m. del 02 de mayo.</div>
+  </div>
+
+  <div class="tip" style="margin-top:1rem"><strong>Checklist antes de enviar:</strong> ① El archivo se llama correctamente con tu nombre · ② Se guarda como .xlsm (no .xlsx) · ③ La macro funciona con un clic · ④ El dashboard tiene todos los filtros activos · ⑤ Los KPIs de la hoja "KPIs" se actualizan al cambiar un dato en "Datos" · ⑥ No hay celdas con #¡REF!, #¡DIV/0! o #¡VALOR! sin manejar</div>
+
+  <div class="footer">
+    [Lima Analytics] · Lima, Perú · Proceso de selección 2025 · Analista de datos Jr.<br>
+    Cualquier consulta: [correo] · Respondemos el mismo día.
   </div>
 
 </div>
