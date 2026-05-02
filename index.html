@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prueba Técnica | Analista de Datos Jr.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#f4f2ed;padding:2rem 1rem;min-height:100vh}
+.card{background:#fff;border-radius:16px;max-width:680px;margin:0 auto;padding:2rem;border:1px solid #e5e3dc;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:99px;font-weight:500;margin-right:6px;margin-bottom:4px}
+.badge.blue{background:#e6f1fb;color:#185fa5;border:1px solid #b5d4f4}
+.badge.green{background:#eaf3de;color:#27500a;border:1px solid #c0dd97}
+.badge.amber{background:#faeeda;color:#633806;border:1px solid #fac775}
+.badge.gray{background:#f1efe8;color:#5f5e5a;border:1px solid #d3d1c7}
+hr{border:none;border-top:1px solid #ede9e0;margin:1.25rem 0}
+.sec-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.65rem}
+.task{border:1px solid #e5e3dc;border-radius:12px;margin-bottom:.85rem;overflow:hidden}
+.task-header{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;background:#f7f5f0}
+.task-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.task-title{font-size:14px;font-weight:500;color:#1a1a18;flex:1}
+.task-time{font-size:12px;color:#888780;white-space:nowrap}
+.task-body{padding:.85rem 1rem;background:#fff}
+.task-desc{font-size:13.5px;color:#5f5e5a;line-height:1.65;margin-bottom:.75rem}
+.item{display:flex;gap:9px;align-items:flex-start;margin-bottom:.45rem}
+.dot{width:5px;height:5px;border-radius:50%;background:#888780;flex-shrink:0;margin-top:7px}
+.dot.g{background:#3b6d11}
+.item-text{font-size:13.5px;color:#2c2c2a;line-height:1.55}
+.code{background:#f4f2ed;border-radius:8px;padding:.6rem .85rem;font-family:'Courier New',monospace;font-size:12.5px;color:#2c2c2a;margin:.65rem 0;border:1px solid #d3d1c7}
+.dataset-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:.5rem}
+.dataset-table th{background:#2c2c2a;color:#fff;padding:6px 10px;text-align:left;font-weight:500}
+.dataset-table td{padding:5px 10px;border-bottom:1px solid #ede9e0;color:#2c2c2a}
+.dataset-table tr:nth-child(even) td{background:#f7f5f0}
+.alert{background:#faeeda;border:1px solid #fac775;border-radius:10px;padding:.65rem 1rem;font-size:13px;color:#633806;margin-bottom:1.25rem;display:flex;gap:8px;align-items:flex-start}
+.cta{background:#f7f5f0;border-radius:12px;border:1px solid #e5e3dc;padding:1.1rem 1.25rem;margin-top:1.25rem}
+.cta-title{font-size:15px;font-weight:500;color:#1a1a18;margin-bottom:.4rem}
+.cta-sub{font-size:13px;color:#5f5e5a;line-height:1.6}
+.entrega-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
+.entrega-card{background:#fff;border:1px solid #e5e3dc;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a}
+.entrega-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Header -->
+  <div style="margin-bottom:1.25rem">
+    <div style="font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Prueba técnica</div>
+    <div style="font-size:22px;font-weight:600;color:#1a1a18;line-height:1.3;margin-bottom:.75rem">Analista de datos Jr.</div>
+    <div>
+      <span class="badge green">Excel avanzado</span>
+      <span class="badge blue">Power BI</span>
+      <span class="badge amber">Macros / VBA</span>
+      <span class="badge gray">⏱ 2 horas estimadas</span>
+    </div>
+  </div>
+
+  <!-- Alerta -->
+  <div class="alert">
+    ⚠️ <div>Entrega el archivo antes de las <strong>9:00 PM del día de hoy</strong>. Envíalo respondiendo este correo con el asunto: <strong>Prueba Técnica – [Tu nombre]</strong></div>
+  </div>
+
+  <!-- Contexto -->
+  <div class="sec-label">Contexto del ejercicio</div>
+  <p style="font-size:14px;color:#2c2c2a;line-height:1.75;margin-bottom:1.25rem">
+    Eres el analista de datos de una empresa con un portafolio de proyectos activos. Tu jefe necesita un sistema básico que permita visualizar el estado actual de cada proyecto, detectar alertas de retraso o sobreejercicio y generar reportes automáticos. Tú debes construirlo.
+  </p>
+
+  <hr>
+
+  <!-- Dataset -->
+  <div class="sec-label">Dataset — copia esto en la hoja "Datos" de tu archivo Excel</div>
+  <div style="overflow-x:auto;margin-bottom:1rem">
+    <table class="dataset-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Proyecto</th><th>PM</th><th>Inicio</th><th>Fin Plan</th>
+          <th>Av.Plan%</th><th>Av.Real%</th><th>Presupuesto</th><th>Gasto Real</th><th>Estado</th><th>Incidencias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>P001</td><td>Construcción Sede Norte</td><td>Laura Méndez</td><td>01/01/2025</td><td>30/06/2025</td><td>80</td><td>65</td><td>120,000</td><td>118,500</td><td>En curso</td><td>3</td></tr>
+        <tr><td>P002</td><td>Digitalización RRHH</td><td>Carlos Ríos</td><td>15/02/2025</td><td>15/05/2025</td><td>100</td><td>100</td><td>45,000</td><td>43,200</td><td>Completado</td><td>0</td></tr>
+        <tr><td>P003</td><td>Sistema de Inventario</td><td>Ana Torres</td><td>01/03/2025</td><td>31/08/2025</td><td>50</td><td>30</td><td>80,000</td><td>52,000</td><td>En curso</td><td>7</td></tr>
+        <tr><td>P004</td><td>Expansión Planta Sur</td><td>Miguel Vega</td><td>10/01/2025</td><td>10/12/2025</td><td>35</td><td>38</td><td>310,000</td><td>95,000</td><td>En curso</td><td>1</td></tr>
+        <tr><td>P005</td><td>Capacitación TI</td><td>Laura Méndez</td><td>01/04/2025</td><td>30/04/2025</td><td>100</td><td>60</td><td>12,000</td><td>9,800</td><td>Retrasado</td><td>2</td></tr>
+        <tr><td>P006</td><td>Auditoría ISO 9001</td><td>Sofía Paredes</td><td>15/03/2025</td><td>15/06/2025</td><td>70</td><td>72</td><td>28,000</td><td>19,500</td><td>En curso</td><td>0</td></tr>
+        <tr><td>P007</td><td>Migración Cloud</td><td>Carlos Ríos</td><td>01/02/2025</td><td>31/07/2025</td><td>60</td><td>40</td><td>95,000</td><td>61,000</td><td>Retrasado</td><td>5</td></tr>
+        <tr><td>P008</td><td>Portal Cliente Web</td><td>Ana Torres</td><td>01/05/2025</td><td>31/10/2025</td><td>10</td><td>8</td><td>55,000</td><td>6,200</td><td>En curso</td><td>0</td></tr>
+        <tr><td>P009</td><td>Renovación Flota</td><td>Miguel Vega</td><td>01/01/2025</td><td>28/02/2025</td><td>100</td><td>100</td><td>180,000</td><td>192,000</td><td>Completado</td><td>1</td></tr>
+        <tr><td>P010</td><td>Seguridad Perimetral</td><td>Sofía Paredes</td><td>15/04/2025</td><td>15/09/2025</td><td>5</td><td>0</td><td>67,000</td><td>0</td><td>Pausado</td><td>4</td></tr>
+        <tr><td>P011</td><td>App Móvil Ventas</td><td>Laura Méndez</td><td>01/03/2025</td><td>30/09/2025</td><td>45</td><td>50</td><td>73,000</td><td>38,000</td><td>En curso</td><td>2</td></tr>
+        <tr><td>P012</td><td>Rediseño Logística</td><td>Carlos Ríos</td><td>01/06/2025</td><td>31/12/2025</td><td>0</td><td>0</td><td>140,000</td><td>0</td><td>No iniciado</td><td>0</td></tr>
+        <tr><td>P013</td><td>BI Comercial</td><td>Ana Torres</td><td>15/01/2025</td><td>15/07/2025</td><td>75</td><td>75</td><td>38,000</td><td>29,000</td><td>En curso</td><td>1</td></tr>
+        <tr><td>P014</td><td>Planta Energía Solar</td><td>Miguel Vega</td><td>01/04/2025</td><td>01/04/2026</td><td>8</td><td>5</td><td>520,000</td><td>28,000</td><td>En curso</td><td>3</td></tr>
+        <tr><td>P015</td><td>Actualización ERP</td><td>Sofía Paredes</td><td>15/02/2025</td><td>15/08/2025</td><td>65</td><td>45</td><td>210,000</td><td>140,000</td><td>Retrasado</td><td>9</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- Tareas -->
+  <div class="sec-label">Tareas a completar</div>
+
+  <!-- Tarea 1 -->
+  <div class="task">
+    <div class="task-header">
+      <div class="task-num" style="background:#eaf3de;color:#27500a">1</div>
+      <div class="task-title">Limpieza y columnas calculadas — Excel</div>
+      <div class="task-time">⏱ 20 min</div>
+    </div>
+    <div class="task-body">
+      <p class="task-desc">En la hoja <strong>"Datos"</strong>, agrega estas columnas calculadas a la derecha del dataset:</p>
+      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Brecha_Avance</strong> = Avance_Plan% – Avance_Real%</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Variacion_Presupuesto%</strong> = ((Gasto_Real – Presupuesto) / Presupuesto) × 100</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text"><strong>Semaforo</strong>: Verde si Brecha ≤ 0 · Amarillo si Brecha entre 1 y 15 · Rojo si Brecha > 15</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Aplicar formato condicional: colorear la fila completa según el valor del Semáforo</div></div>
+    </div>
+  </div>
+
+  <!-- Tarea 2 -->
+  <div class="task">
+    <div class="task-header">
+      <div class="task-num" style="background:#e6f1fb;color:#185fa5">2</div>
+      <div class="task-title">Hoja de KPIs — Excel</div>
+      <div class="task-time">⏱ 25 min</div>
+    </div>
+    <div class="task-body">
+      <p class="task-desc">Crea una hoja nueva llamada <strong>"KPIs"</strong> y calcula los siguientes indicadores usando fórmulas (no valores escritos a mano):</p>
+      <div class="item"><div class="dot g"></div><div class="item-text">Cantidad y porcentaje de proyectos por estado (En curso, Completado, Retrasado, Pausado, No iniciado)</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Promedio de Brecha_Avance por cada Project Manager</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Proyecto con mayor sobreejercicio presupuestal (%) — nombre y valor</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Total de incidencias agrupadas por estado</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Índice general de cumplimiento = SUMA(Avance_Real%) / SUMA(Avance_Plan%) × 100</div></div>
+    </div>
+  </div>
+
+  <!-- Tarea 3 -->
+  <div class="task">
+    <div class="task-header">
+      <div class="task-num" style="background:#faeeda;color:#633806">3</div>
+      <div class="task-title">Dashboard visual — Excel o Power BI</div>
+      <div class="task-time">⏱ 35 min</div>
+    </div>
+    <div class="task-body">
+      <p class="task-desc">Crea un dashboard que permita visualizar el estado del portafolio. Debe incluir mínimo:</p>
+      <div class="item"><div class="dot g"></div><div class="item-text">Gráfico de distribución de proyectos por estado (dona o barras)</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Gráfico comparativo: Avance Planificado vs Avance Real por proyecto</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Tabla o gráfico de desempeño por Project Manager</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Filtro funcional por Project Manager o por Estado del proyecto</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Indicador visual del índice general de cumplimiento (puede ser una tarjeta o velocímetro)</div></div>
+      <p class="task-desc" style="margin-top:.65rem;font-style:italic">Si usas Power BI, entrega el archivo .pbix además del Excel.</p>
+    </div>
+  </div>
+
+  <!-- Tarea 4 -->
+  <div class="task">
+    <div class="task-header">
+      <div class="task-num" style="background:#fcebeb;color:#791f1f">4</div>
+      <div class="task-title">Automatización con Macro / VBA — Excel</div>
+      <div class="task-time">⏱ 30 min</div>
+    </div>
+    <div class="task-body">
+      <p class="task-desc">En el mismo archivo Excel, crea una macro que al ejecutarse haga lo siguiente:</p>
+      <div class="item"><div class="dot g"></div><div class="item-text">Reaplicar automáticamente el formato de semáforo (colores) sobre toda la tabla de datos</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Generar en una nueva hoja llamada <strong>"Reporte"</strong> un resumen con: fecha de generación, total de proyectos, cantidad por estado y los 3 proyectos con mayor brecha de avance</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">Mostrar un mensaje (MsgBox) al terminar indicando cuántos proyectos están en estado crítico (Semáforo Rojo)</div></div>
+      <div class="item"><div class="dot g"></div><div class="item-text">El botón para ejecutar la macro debe estar visible en el dashboard</div></div>
+      <div class="code">
+        Tip: Guarda el archivo como .xlsm (Excel habilitado para macros)<br>
+        para que el código VBA se conserve al enviarlo.
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Reglas -->
+  <div class="sec-label">Reglas importantes</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem">
+    <div style="background:#f7f5f0;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a;border:1px solid #e5e3dc">
+      <div style="font-weight:500;margin-bottom:4px">✅ Se evalúa</div>
+      <div style="color:#5f5e5a;line-height:1.6">Lógica y criterio analítico · Fórmulas correctas · Macro funcional · Claridad del dashboard</div>
+    </div>
+    <div style="background:#f7f5f0;border-radius:10px;padding:.75rem;font-size:13px;color:#2c2c2a;border:1px solid #e5e3dc">
+      <div style="font-weight:500;margin-bottom:4px">❌ No se evalúa</div>
+      <div style="color:#5f5e5a;line-height:1.6">Diseño visual elaborado · Perfección estética · Uso de herramientas externas al stack indicado</div>
+    </div>
+  </div>
+  <div style="font-size:13.5px;color:#5f5e5a;line-height:1.65;background:#f4f2ed;border-radius:10px;padding:.75rem 1rem;border:1px solid #e5e3dc">
+    💡 Si algo no te sale, deja un comentario en la celda o en el código explicando qué intentabas hacer. Eso también se evalúa.
+  </div>
+
+  <hr>
+
+  <!-- Entrega -->
+  <div class="cta">
+    <div class="cta-title">¿Cómo entregar?</div>
+    <p class="cta-sub">Responde este correo adjuntando tu(s) archivo(s). Si tienes dudas, escríbenos antes de las 6:00 PM.</p>
+    <div class="entrega-grid">
+      <div class="entrega-card">
+        <div class="entrega-label">Archivo obligatorio</div>
+        PruebaTecnica_[TuNombre].xlsm
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-label">Opcional (bonus)</div>
+        Dashboard_[TuNombre].pbix
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-label">Asunto del correo</div>
+        Prueba Técnica – [Tu nombre]
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-label">Plazo máximo</div>
+        Hoy · 9:00 PM
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:11.5px;color:#b4b2a9;margin-top:1.5rem">
+    [Empresa] · Lima, Perú · Cualquier consulta responderemos el mismo día.
+  </div>
+
+</div>
+</body>
+</html>
